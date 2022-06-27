@@ -59,11 +59,11 @@ function playRound (playerSelection, computerSelection) {
 
 function game() {
     for (let i = 0; i < 5; i++) {
-        console.log(playerScore += i++);
+        console.log(playRound('rock', computerPlay(hand)));
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = computerPlay(hand);
+game();
+
 
 
