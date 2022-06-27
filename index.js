@@ -28,24 +28,30 @@ function playRound (playerSelection, computerSelection) {
         return `It's a TIE! Two rocks don't make a right!`;
 
     }else if (playerSelection === 'rock' && computerSelection === 'paper') {
+        computerScore++;
         return `You LOSE! Paper beats Rock!`;
 
     }else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        playerScore++;
         return 'You WIN! Rock beats Scissors!';
 
     }else if (playerSelection === 'paper' && computerSelection === 'rock') {
+        playerScore++;
         return `You WIN! Paper beats Rock!`;
     
     }else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+        computerScore++;
         return `You LOSE! Scissors beats Paper!`;
 
     }else if (playerSelection === 'paper' && computerSelection === 'paper') {
         return `It's a TIE! Paper Stackin' Time!`;
 
     }else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+        computerScore++;
         return `You LOSE! Rock beats Scissors!`;
 
     }else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        playerScore++;
         return `You WIN! Scissors beats Paper!`;
 
     }else if (playerSelection === 'scissors' && computerSelection === 'scissors') {
@@ -58,9 +64,31 @@ function playRound (playerSelection, computerSelection) {
 
 
 function game() {
+
+    let humanChoice = prompt(`Choose your weapon! Rock, Paper, or Scissors`)
     for (let i = 0; i < 5; i++) {
-        console.log(playRound('rock', computerPlay(hand)));
+        console.log(playRound(humanChoice, computerPlay(hand)), playerScore, computerScore);
     }
+
+    if (computerScore > playerScore) {
+        console.log('The Computer Wins!');
+
+    }else if (computerScore < playerScore) {
+        console.log('You win this time, Human.');
+
+    }else {
+        let enterValidInput = prompt(`Choose a valid weapon! Rock, Paper, or Scissors`);
+
+        for (let i = 0; i < 5; i++) {
+            console.log(playRound(enterValidInput, computerPlay(hand)), playerScore, computerScore);
+        } if (computerScore > playerScore) {
+        console.log('The Computer Wins!');
+
+    }else if (computerScore < playerScore) {
+        console.log('You win this time, Human.');
+    }
+
+}
 }
 
 game();
